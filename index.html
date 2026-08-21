@@ -481,7 +481,7 @@
         </p>
 
         <div id="visitor-count">
-            Coming Soon
+            Loading...
         </div>
 
         <p>
@@ -493,13 +493,14 @@
     fetch('https://yhglft6inc.execute-api.us-east-1.amazonaws.com/prod')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('visitor-count').textContent = data.count;
+            const result = JSON.parse(data.body);
+            document.getElementById('visitor-count').textContent = result.count;
         })
         .catch(error => {
             console.error('Error fetching visitor count:', error);
+            document.getElementById('visitor-count').textContent = 'Unavailable';
         });
 </script>
-
 
     <!-- FOOTER -->
 
